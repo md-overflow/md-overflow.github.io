@@ -37,21 +37,51 @@
       <div class="hero-glow"></div>
       <div class="hero-glow2"></div>
       <div class="container">
-        <div class="hero-content">
-          <div class="hero-eyebrow">Available for opportunities</div>
-          <h1 class="hero-name">
-            Md<br>Mudassir<br><span class="accent">Ahmed.</span>
-          </h1>
-          <p class="hero-tagline">
-            Aspiring to connect minds with the heart of Technology.
-          </p>
-          <div class="hero-actions">
-            <a href="pages/projects.html" class="btn btn-primary">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
-              View Projects
-            </a>
-            <a href="pages/about.html" class="btn btn-outline">About Me →</a>
+        <div class="hero-split">
+
+          <!-- Left: Text (left-aligned) -->
+          <div class="hero-content">
+            <div class="hero-eyebrow">Available for opportunities</div>
+            <h1 class="hero-name">
+              Md<br>Mudassir<br><span class="accent">Ahmed.</span>
+            </h1>
+            <p class="hero-tagline">
+              Aspiring to connect minds with the heart of Technology.
+            </p>
+            <div class="hero-actions">
+              <a href="pages/projects.html" class="btn btn-primary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+                View Projects
+              </a>
+              <a href="pages/about.html" class="btn btn-outline">About Me →</a>
+            </div>
           </div>
+
+          <!-- Right: Profile Image -->
+          <div class="hero-image-wrap">
+            <div class="hero-img-ring"></div>
+            <div class="hero-img-container">
+              <!-- Replace src with your real photo path e.g. assets/images/profile.jpg -->
+              <img
+                src="assets/images/profile-placeholder.svg"
+                alt="Md Mudassir Ahmed"
+                class="hero-profile-img"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="hero-img-placeholder">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span>Add your photo</span>
+              </div>
+            </div>
+            <!-- Floating badge -->
+            <div class="hero-badge">
+              <div class="hero-badge-dot"></div>
+              <span>Open to Work</span>
+            </div>
+            <!-- Decorative corner -->
+            <div class="hero-img-corner"></div>
+          </div>
+
         </div>
       </div>
       <div class="hero-scroll"><div class="scroll-line"></div><span>Scroll</span></div>
