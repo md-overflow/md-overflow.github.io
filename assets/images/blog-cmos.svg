@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="360" viewBox="0 0 800 360">
+  <rect width="800" height="360" fill="#0d1a28"/>
+  <text x="400" y="100" font-family="monospace" font-size="48" fill="#00c8ff" text-anchor="middle" opacity="0.15" font-weight="bold">CMOS</text>
+  <text x="400" y="160" font-family="Georgia,serif" font-size="26" fill="#e8f0fe" text-anchor="middle" font-weight="bold">CMOS Inverter Analysis</text>
+  <text x="400" y="195" font-family="monospace" font-size="12" fill="#7a8fa6" text-anchor="middle">VTC · Noise Margin · Propagation Delay</text>
+  <!-- Simple waveform -->
+  <polyline points="80,280 80,240 160,240 160,280 240,280 240,240 320,240 320,280 400,280" fill="none" stroke="#0066ff" stroke-width="2"/>
+  <polyline points="80,280 160,280 160,240 240,240 240,280 320,280 320,240 400,240 400,280" fill="none" stroke="#00c8ff" stroke-width="2"/>
+  <text x="80" y="310" font-family="monospace" font-size="9" fill="#3a5a70">Vin</text>
+  <text x="80" y="232" font-family="monospace" font-size="9" fill="#3a5a70">Vout</text>
+  <text x="400" y="345" font-family="monospace" font-size="10" fill="#3a5a70" text-anchor="middle">January 2025 · VLSI</text>
+</svg>
