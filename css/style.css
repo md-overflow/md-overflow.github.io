@@ -635,77 +635,15 @@ section { padding: 6rem 0; }
   pointer-events: none;
 }
 
-/* ═══════════════════════════════
-   ENHANCED TAGLINE
-═══════════════════════════════ */
-.hero-tagline-wrap {
-  margin-bottom: 2.5rem;
-  position: relative;
-}
-
+/* ── Tagline ── */
 .hero-tagline {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.05rem, 2vw, 1.3rem);
-  color: var(--text2);
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: var(--muted);
+  margin-bottom: 2.5rem;
   max-width: 460px;
-  line-height: 1.75;
-  position: relative;
-  padding: 1.1rem 1.4rem;
-  background: rgba(0, 200, 255, 0.04);
-  border-left: 2px solid var(--accent);
-  border-radius: 0 var(--radius) var(--radius) 0;
-}
-
-[data-theme="light"] .hero-tagline {
-  background: rgba(0, 96, 204, 0.05);
-}
-
-/* Highlighted words inside tagline */
-.tagline-highlight {
-  color: var(--text);
-  font-weight: 600;
-  position: relative;
-  display: inline-block;
-}
-.tagline-highlight::after {
-  content: '';
-  position: absolute;
-  bottom: 1px; left: 0; right: 0;
-  height: 1.5px;
-  background: currentColor;
-  opacity: 0.35;
-  border-radius: 1px;
-}
-.tagline-highlight--accent {
-  color: var(--accent);
-  font-style: normal;
-}
-.tagline-highlight--accent::after {
-  background: var(--accent);
-  opacity: 0.5;
-}
-
-/* Subtle animated shimmer on the left border */
-.hero-tagline::before {
-  content: '"';
-  position: absolute;
-  top: -0.5rem; left: -1.2rem;
-  font-family: var(--font-display);
-  font-size: 3.5rem;
-  color: var(--accent);
-  opacity: 0.2;
-  line-height: 1;
-  pointer-events: none;
-}
-
-/* Decorative bar below tagline */
-.tagline-bar {
-  margin-top: 0.75rem;
-  height: 2px;
-  width: 60px;
-  background: linear-gradient(90deg, var(--accent), transparent);
-  border-radius: 2px;
+  line-height: 1.65;
 }
 
 /* ═══════════════════════════════
