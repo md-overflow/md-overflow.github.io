@@ -168,6 +168,7 @@ section { padding: 6rem 0; }
   min-height: calc(100vh - var(--nav-h));
   display: flex; align-items: center;
   position: relative; overflow: hidden;
+  padding: 2rem 0;             /* breathing room top/bottom */
 }
 .hero-glow {
   position: absolute; top: 10%; left: -15%;
@@ -201,8 +202,8 @@ section { padding: 6rem 0; }
 
 .hero-eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 1.5rem;
+  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.9rem;   /* tighter */
   display: flex; align-items: center; gap: 0.75rem;
 }
 .hero-eyebrow::before {
@@ -211,18 +212,22 @@ section { padding: 6rem 0; }
 }
 .hero-name {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-size: clamp(2.4rem, 5.5vw, 4.8rem);      /* slightly smaller cap */
   font-weight: 700; line-height: 0.95;
-  letter-spacing: -0.03em; color: var(--text); margin-bottom: 1.25rem;
+  letter-spacing: -0.03em; color: var(--text);
+  margin-bottom: 1rem;                            /* tighter */
 }
 .hero-name .accent { color: var(--accent); font-style: italic; }
+
+/* ── Tagline ── */
 .hero-tagline {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(0.95rem, 1.8vw, 1.2rem);
-  color: var(--muted); margin-bottom: 2.5rem;
-  max-width: 440px; line-height: 1.65;
+  font-size: clamp(0.9rem, 1.6vw, 1.1rem);       /* slightly smaller */
+  color: var(--muted); margin-bottom: 1.75rem;    /* tighter */
+  max-width: 440px; line-height: 1.6;
 }
+
 .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
 /* ── Profile Image — Right side, always visible ── */
@@ -230,12 +235,13 @@ section { padding: 6rem 0; }
   position: relative;
   z-index: 2;
   flex-shrink: 0;
+  margin-bottom: 1.5rem;   /* space for the badge below */
 }
 
 .hero-img-container {
-  width: 260px;
-  height: 320px;
-  border-radius: 160px 160px 120px 120px; /* pill / portrait shape */
+  width: 220px;            /* narrower */
+  height: 270px;           /* shorter — fits viewport */
+  border-radius: 140px 140px 100px 100px;
   overflow: hidden;
   border: 1px solid var(--border);
   background: var(--surface);
@@ -254,7 +260,7 @@ section { padding: 6rem 0; }
 }
 .hero-image-wrap:hover .hero-profile-img { transform: scale(1.04); }
 
-/* Placeholder (shown via SVG, hidden after real photo added) */
+/* Placeholder */
 .hero-img-placeholder {
   display: flex;
   width: 100%; height: 100%;
@@ -271,72 +277,70 @@ section { padding: 6rem 0; }
   padding: 1.5rem;
 }
 
-/* Glowing ring around image */
+/* Glowing ring */
 .hero-img-ring {
   position: absolute;
   inset: -6px;
-  border-radius: 168px 168px 128px 128px;
+  border-radius: 148px 148px 108px 108px;
   background: conic-gradient(from 0deg, var(--accent), var(--accent2), transparent, var(--accent));
   opacity: 0.25;
   pointer-events: none;
   animation: ring-spin 8s linear infinite;
   z-index: -1;
 }
-@keyframes ring-spin {
-  to { transform: rotate(360deg); }
-}
+@keyframes ring-spin { to { transform: rotate(360deg); } }
 
 /* "Open to Work" badge */
 .hero-badge {
   position: absolute;
-  bottom: -16px; left: 50%;
+  bottom: -14px; left: 50%;
   transform: translateX(-50%);
   display: flex; align-items: center; gap: 0.45rem;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 100px;
-  padding: 0.4rem 1rem;
+  padding: 0.35rem 0.9rem;
   font-family: var(--font-mono);
-  font-size: 0.68rem; letter-spacing: 0.06em;
+  font-size: 0.65rem; letter-spacing: 0.06em;
   color: var(--text2);
   box-shadow: 0 8px 24px rgba(0,0,0,0.3);
   white-space: nowrap;
 }
 .hero-badge-dot {
-  width: 7px; height: 7px;
+  width: 6px; height: 6px;
   background: #00e676; border-radius: 50%;
-  box-shadow: 0 0 8px #00e676;
+  box-shadow: 0 0 6px #00e676;
   animation: pulse-dot 2s ease-in-out infinite;
 }
 @keyframes pulse-dot {
   0%,100% { box-shadow: 0 0 6px #00e676; }
-  50%      { box-shadow: 0 0 14px #00e676; }
+  50%      { box-shadow: 0 0 12px #00e676; }
 }
 
 /* Corner accent */
 .hero-img-corner {
   position: absolute;
   top: -10px; right: -10px;
-  width: 28px; height: 28px;
+  width: 24px; height: 24px;
   border-top: 2px solid var(--accent);
   border-right: 2px solid var(--accent);
   border-radius: 0 6px 0 0;
   opacity: 0.4;
 }
 
-/* Responsive — only collapse on very small screens */
+/* Responsive */
 @media (max-width: 640px) {
   .hero-split {
     flex-direction: column-reverse;
     align-items: flex-start;
-    gap: 2rem;
+    gap: 1.5rem;
   }
   .hero-img-container {
-    width: 120px; height: 148px;
-    border-radius: 60px 60px 50px 50px;
+    width: 110px; height: 136px;
+    border-radius: 55px 55px 45px 45px;
   }
-  .hero-img-ring { inset: -4px; border-radius: 64px 64px 54px 54px; }
-  .hero-badge { font-size: 0.6rem; padding: 0.3rem 0.8rem; }
+  .hero-img-ring { inset: -4px; border-radius: 59px 59px 49px 49px; }
+  .hero-badge { font-size: 0.6rem; padding: 0.3rem 0.75rem; }
 }
 .btn {
   display: inline-flex; align-items: center; gap: 0.5rem;
