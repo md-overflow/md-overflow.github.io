@@ -384,7 +384,7 @@ section { padding: 6rem 0; }
   background: var(--surface);
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-lg);
-  padding: 1.75rem 1.5rem;
+  padding: 0.9rem 1.5rem;      /* compact vertical, same horizontal */
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -399,42 +399,23 @@ section { padding: 6rem 0; }
   transition: opacity var(--transition);
 }
 .stat-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   border-color: var(--border);
   box-shadow: var(--card-shadow);
 }
 .stat-card:hover::before { opacity: 1; }
 
-.stat-card-icon {
-  width: 40px; height: 40px;
-  background: rgba(0, 200, 255, 0.08);
-  border: 1px solid rgba(0, 200, 255, 0.18);
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--accent);
-  margin: 0 auto 1rem;
-  transition: all var(--transition);
-}
-[data-theme="light"] .stat-card-icon {
-  background: rgba(0, 96, 204, 0.08);
-  border-color: rgba(0, 96, 204, 0.2);
-}
-.stat-card:hover .stat-card-icon {
-  background: rgba(0, 200, 255, 0.15);
-  transform: scale(1.1);
-}
-
 .stat-num {
   font-family: var(--font-display);
-  font-size: 2.2rem; font-weight: 700;
+  font-size: 2rem; font-weight: 700;
   color: var(--accent);
   line-height: 1;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.25rem;
   letter-spacing: -0.02em;
 }
 .stat-label {
   font-family: var(--font-mono);
-  font-size: 0.65rem; color: var(--muted);
+  font-size: 0.62rem; color: var(--muted);
   letter-spacing: 0.12em; text-transform: uppercase;
 }
 
