@@ -189,7 +189,7 @@ section { padding: 6rem 0; }
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 6rem;                   /* wider gap between text and image */
+  gap: 4rem;
   width: 100%;
 }
 
@@ -198,6 +198,7 @@ section { padding: 6rem 0; }
   text-align: left;
   flex: 1;
   min-width: 0;
+  margin-left: -1.5rem;
 }
 
 .hero-eyebrow {
@@ -239,9 +240,9 @@ section { padding: 6rem 0; }
 }
 
 .hero-img-container {
-  width: 220px;            /* narrower */
-  height: 270px;           /* shorter — fits viewport */
-  border-radius: 140px 140px 100px 100px;
+  width: 290px;
+  height: 360px;
+  border-radius: 180px 180px 130px 130px;
   overflow: hidden;
   border: 1px solid var(--border);
   background: var(--surface);
@@ -281,7 +282,7 @@ section { padding: 6rem 0; }
 .hero-img-ring {
   position: absolute;
   inset: -6px;
-  border-radius: 148px 148px 108px 108px;
+  border-radius: 195px 195px 145px 145px;
   background: conic-gradient(from 0deg, var(--accent), var(--accent2), transparent, var(--accent));
   opacity: 0.25;
   pointer-events: none;
