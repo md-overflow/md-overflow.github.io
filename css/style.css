@@ -240,9 +240,9 @@ section { padding: 6rem 0; }
 }
 
 .hero-img-container {
-  width: 290px;
-  height: 360px;
-  border-radius: 180px 180px 130px 130px;
+  width: 220px;
+  height: 270px;
+  border-radius: 140px 140px 100px 100px;
   overflow: hidden;
   border: 1px solid var(--border);
   background: var(--surface);
@@ -282,7 +282,7 @@ section { padding: 6rem 0; }
 .hero-img-ring {
   position: absolute;
   inset: -6px;
-  border-radius: 195px 195px 145px 145px;
+  border-radius: 148px 148px 108px 108px;
   background: conic-gradient(from 0deg, var(--accent), var(--accent2), transparent, var(--accent));
   opacity: 0.25;
   pointer-events: none;
