@@ -5,6 +5,161 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Writings — Md Mudassir Ahmed</title>
   <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .series-feature {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 3rem;
+      margin-bottom: 3.5rem;
+      position: relative;
+    }
+    .series-feature::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,200,255,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .series-label-badge {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(0,200,255,0.08);
+      border: 1px solid rgba(0,200,255,0.18);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      margin-bottom: 1.25rem;
+    }
+    .series-label-badge::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.7); }
+    }
+    .series-inner {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+    }
+    @media (max-width: 768px) {
+      .series-inner { grid-template-columns: 1fr; }
+      .series-divider { display: none; }
+    }
+    .series-left { padding: 2.5rem; }
+    .series-divider { background: var(--border); }
+    .series-right { padding: 2.5rem; }
+    .series-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+    .series-heading span { color: var(--accent); font-style: italic; }
+    .series-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.75rem;
+    }
+    .series-posts-list { display: flex; flex-direction: column; gap: 0.6rem; }
+    .series-post-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.75rem 1rem;
+      border-radius: calc(var(--radius) - 4px);
+      border: 1px solid var(--border-soft);
+      background: var(--bg2);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .series-post-item:hover {
+      border-color: var(--accent);
+      background: rgba(0,200,255,0.05);
+      transform: translateX(4px);
+    }
+    .series-post-item.is-live {
+      border-color: rgba(0,200,255,0.3);
+    }
+    .series-post-num {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--accent);
+      opacity: 0.7;
+      flex-shrink: 0;
+      width: 1.5rem;
+    }
+    .series-post-info { flex: 1; min-width: 0; }
+    .series-post-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .series-post-sub {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
+    .series-post-status {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.5rem;
+      border-radius: 100px;
+      flex-shrink: 0;
+    }
+    .status-live { color: #22c55e; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.25); }
+    .status-soon { color: var(--muted); background: var(--bg3); border: 1px solid var(--border-soft); }
+    .series-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      transition: gap 0.2s;
+    }
+    .series-cta:hover { gap: 0.8rem; }
+    .writings-section-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+    .writings-section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border-soft);
+    }
+  </style>
 </head>
 <body>
   <div class="grid-bg"></div>
@@ -31,110 +186,139 @@
           Exploring<br><span style="color:var(--accent); font-style:italic;">Ideas.</span>
         </h1>
         <p class="fade-up" style="color:var(--muted); font-size:0.9rem; max-width:500px; margin-top:1rem; line-height:1.8;">
-          Notes on VLSI verification, RTL design, processor architecture, and the journey of learning semiconductor engineering from the ground up.
+          Notes on VLSI verification, RTL design, processor architecture, and the science underneath it all — written from a curious engineer's perspective.
         </p>
-
-        <!-- Search -->
         <div class="search-bar fade-up">
           <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <input type="text" class="search-input" placeholder="Search posts..." id="search-input" />
         </div>
-
-        <!-- Tags -->
         <div class="tag-cloud fade-up">
-          <span class="tag" data-tag="all">All</span>
+          <span class="tag active" data-tag="all">All</span>
+          <span class="tag" data-tag="series">Series</span>
           <span class="tag" data-tag="verification">Verification</span>
           <span class="tag" data-tag="uvm">UVM</span>
           <span class="tag" data-tag="architecture">Architecture</span>
           <span class="tag" data-tag="rtl">RTL</span>
           <span class="tag" data-tag="career">Career</span>
           <span class="tag" data-tag="protocols">Protocols</span>
+          <span class="tag" data-tag="semiconductors">Semiconductors</span>
         </div>
       </div>
     </div>
 
     <section>
       <div class="container">
-        <div class="blog-grid" id="blog-grid">
 
+        <div class="writings-section-label fade-up">Featured Series</div>
+
+        <div class="series-feature fade-up">
+          <div class="series-inner">
+            <div class="series-left">
+              <div class="series-label-badge">6-Part Series · Ongoing</div>
+              <div class="series-heading">Semiconductors in the<br>Foreseeable Future —<br><span>Knowns &amp; Unknowns</span></div>
+              <p class="series-desc">A grounded, first-principles journey through semiconductor science — from crystal physics and band theory to the walls the industry is hitting today, and what comes next. No hype, no hand-waving. Just the science.</p>
+              <a href="series-semiconductors-post1.html" class="series-cta">Start Reading — Post 1 →</a>
+            </div>
+            <div class="series-divider"></div>
+            <div class="series-right">
+              <div class="series-posts-list">
+                <a href="series-semiconductors-post1.html" class="series-post-item is-live">
+                  <span class="series-post-num">01</span>
+                  <div class="series-post-info">
+                    <div class="series-post-name">The Material Beneath Everything</div>
+                    <div class="series-post-sub">Chemistry, band theory &amp; the p-n junction</div>
+                  </div>
+                  <span class="series-post-status status-live">Live</span>
+                </a>
+                <a href="series-semiconductors-post2.html" class="series-post-item">
+                  <span class="series-post-num">02</span>
+                  <div class="series-post-info">
+                    <div class="series-post-name">How We Learned to Control It</div>
+                    <div class="series-post-sub">Transistors, ICs &amp; Moore's Law</div>
+                  </div>
+                  <span class="series-post-status status-soon">Soon</span>
+                </a>
+                <a href="series-semiconductors-post3.html" class="series-post-item">
+                  <span class="series-post-num">03</span>
+                  <div class="series-post-info">
+                    <div class="series-post-name">The Wall</div>
+                    <div class="series-post-sub">Where physics stops cooperating</div>
+                  </div>
+                  <span class="series-post-status status-soon">Soon</span>
+                </a>
+                <a href="series-semiconductors-post4.html" class="series-post-item">
+                  <span class="series-post-num">04</span>
+                  <div class="series-post-info">
+                    <div class="series-post-name">The Knowns</div>
+                    <div class="series-post-sub">GAA, EUV, 3D stacking &amp; chiplets</div>
+                  </div>
+                  <span class="series-post-status status-soon">Soon</span>
+                </a>
+                <a href="series-semiconductors-post5.html" class="series-post-item">
+                  <span class="series-post-num">05</span>
+                  <div class="series-post-info">
+                    <div class="series-post-name">The Unknowns</div>
+                    <div class="series-post-sub">Graphene, neuromorphic &amp; quantum</div>
+                  </div>
+                  <span class="series-post-status status-soon">Soon</span>
+                </a>
+                <a href="series-semiconductors-post6.html" class="series-post-item">
+                  <span class="series-post-num">06</span>
+                  <div class="series-post-info">
+                    <div class="series-post-name">What It Means</div>
+                    <div class="series-post-sub">Geopolitics, supply chains &amp; the human cost</div>
+                  </div>
+                  <span class="series-post-status status-soon">Soon</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="writings-section-label fade-up">Other Writings</div>
+        <div class="blog-grid" id="blog-grid">
           <div class="card blog-card fade-up" data-tags="verification uvm">
-            <div class="blog-card-img">
-              <img src="../assets/images/blog-cmos.svg" alt="UVM Testbench" loading="lazy" />
-            </div>
-            <div class="blog-meta">
-              <span class="blog-date">Jan 2025</span>
-              <span class="blog-category">Verification</span>
-            </div>
+            <div class="blog-card-img"><img src="../assets/images/blog-cmos.svg" alt="UVM Testbench" loading="lazy" /></div>
+            <div class="blog-meta"><span class="blog-date">Jan 2025</span><span class="blog-category">Verification</span></div>
             <h3 class="blog-title">Building Your First UVM Testbench from Scratch</h3>
             <p class="blog-excerpt">A step-by-step walkthrough of UVM architecture — agents, sequencers, drivers, monitors, scoreboards and coverage collectors — illustrated with a simple ALU design.</p>
             <a href="#" class="blog-read-more">Read More →</a>
           </div>
-
           <div class="card blog-card fade-up" data-tags="architecture rtl">
-            <div class="blog-card-img">
-              <img src="../assets/images/blog-fpga.svg" alt="RISC-V pipeline" loading="lazy" />
-            </div>
-            <div class="blog-meta">
-              <span class="blog-date">Nov 2024</span>
-              <span class="blog-category">Architecture</span>
-            </div>
-            <h3 class="blog-title">RISC-V Pipeline Hazards: Detection, Forwarding & Stalls</h3>
+            <div class="blog-card-img"><img src="../assets/images/blog-fpga.svg" alt="RISC-V pipeline" loading="lazy" /></div>
+            <div class="blog-meta"><span class="blog-date">Nov 2024</span><span class="blog-category">Architecture</span></div>
+            <h3 class="blog-title">RISC-V Pipeline Hazards: Detection, Forwarding &amp; Stalls</h3>
             <p class="blog-excerpt">A deep dive into data and control hazards in a 5-stage RISC-V pipeline — how forwarding paths reduce stalls and how branch prediction keeps the pipe flowing.</p>
             <a href="#" class="blog-read-more">Read More →</a>
           </div>
-
           <div class="card blog-card fade-up" data-tags="career">
-            <div class="blog-card-img">
-              <img src="../assets/images/blog-career.svg" alt="VLSI career" loading="lazy" />
-            </div>
-            <div class="blog-meta">
-              <span class="blog-date">Oct 2024</span>
-              <span class="blog-category">Career</span>
-            </div>
+            <div class="blog-card-img"><img src="../assets/images/blog-career.svg" alt="VLSI career" loading="lazy" /></div>
+            <div class="blog-meta"><span class="blog-date">Oct 2024</span><span class="blog-category">Career</span></div>
             <h3 class="blog-title">Why I Chose VLSI Verification: A Fresh Graduate's Perspective</h3>
             <p class="blog-excerpt">My journey from EEE at KLE Tech to chip verification training at Maven Silicon — the certifications, the turning points, and what finally made it all click.</p>
             <a href="#" class="blog-read-more">Read More →</a>
           </div>
-
           <div class="card blog-card fade-up" data-tags="protocols verification">
-            <div class="blog-card-img">
-              <img src="../assets/images/blog-spice.svg" alt="AMBA protocols" loading="lazy" />
-            </div>
-            <div class="blog-meta">
-              <span class="blog-date">Sep 2024</span>
-              <span class="blog-category">Protocols</span>
-            </div>
-            <h3 class="blog-title">AMBA Protocols Explained: AXI, AHB & APB — When to Use Which</h3>
-            <p class="blog-excerpt">Breaking down the three core AMBA bus protocols, their transaction models, and how to choose the right one for your SoC interconnect from a verification engineer's perspective.</p>
+            <div class="blog-card-img"><img src="../assets/images/blog-spice.svg" alt="AMBA protocols" loading="lazy" /></div>
+            <div class="blog-meta"><span class="blog-date">Sep 2024</span><span class="blog-category">Protocols</span></div>
+            <h3 class="blog-title">AMBA Protocols Explained: AXI, AHB &amp; APB — When to Use Which</h3>
+            <p class="blog-excerpt">Breaking down the three core AMBA bus protocols, their transaction models, and how to choose the right one for your SoC interconnect.</p>
             <a href="#" class="blog-read-more">Read More →</a>
           </div>
-
           <div class="card blog-card fade-up" data-tags="uvm verification">
-            <div class="blog-card-img">
-              <img src="../assets/images/blog-sta.svg" alt="Coverage closure" loading="lazy" />
-            </div>
-            <div class="blog-meta">
-              <span class="blog-date">Aug 2024</span>
-              <span class="blog-category">UVM</span>
-            </div>
+            <div class="blog-card-img"><img src="../assets/images/blog-sta.svg" alt="Coverage closure" loading="lazy" /></div>
+            <div class="blog-meta"><span class="blog-date">Aug 2024</span><span class="blog-category">UVM</span></div>
             <h3 class="blog-title">Achieving Coverage Closure: Strategies Beyond Random Simulation</h3>
             <p class="blog-excerpt">How to analyse coverage reports, write targeted directed tests, use constraint solving, and apply coverage-driven verification to close stubborn holes efficiently.</p>
             <a href="#" class="blog-read-more">Read More →</a>
           </div>
-
           <div class="card blog-card fade-up" data-tags="rtl architecture">
-            <div class="blog-card-img">
-              <img src="../assets/images/blog-lowpower.svg" alt="Static Timing Analysis" loading="lazy" />
-            </div>
-            <div class="blog-meta">
-              <span class="blog-date">Jul 2024</span>
-              <span class="blog-category">RTL</span>
-            </div>
+            <div class="blog-card-img"><img src="../assets/images/blog-lowpower.svg" alt="Static Timing Analysis" loading="lazy" /></div>
+            <div class="blog-meta"><span class="blog-date">Jul 2024</span><span class="blog-category">RTL</span></div>
             <h3 class="blog-title">Static Timing Analysis Fundamentals Every RTL Engineer Should Know</h3>
-            <p class="blog-excerpt">Setup and hold times, clock skew, timing paths, and how STA tools flag violations — explained plainly for someone coming from RTL design rather than physical design.</p>
+            <p class="blog-excerpt">Setup and hold times, clock skew, timing paths, and how STA tools flag violations — explained plainly for someone coming from RTL design.</p>
             <a href="#" class="blog-read-more">Read More →</a>
           </div>
-
         </div>
       </div>
     </section>
@@ -163,7 +347,7 @@
           <div class="footer-col-title">Focus Areas</div>
           <ul class="footer-nav">
             <li><span>VLSI Verification (UVM)</span></li>
-            <li><span>RTL Design & Synthesis</span></li>
+            <li><span>RTL Design &amp; Synthesis</span></li>
             <li><span>SoC Protocol Verification</span></li>
             <li><span>Processor Architecture</span></li>
             <li><span>Embedded Systems</span></li>
@@ -190,17 +374,14 @@
 
   <script src="../js/main.js"></script>
   <script>
-    // Search
     const searchInput = document.getElementById('search-input');
     const blogCards = document.querySelectorAll('.blog-card');
     searchInput.addEventListener('input', () => {
       const q = searchInput.value.toLowerCase();
       blogCards.forEach(card => {
-        const text = card.innerText.toLowerCase();
-        card.style.display = text.includes(q) ? '' : 'none';
+        card.style.display = card.innerText.toLowerCase().includes(q) ? '' : 'none';
       });
     });
-    // Tag filter
     document.querySelectorAll('.tag').forEach(tag => {
       tag.addEventListener('click', () => {
         document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
