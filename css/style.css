@@ -189,7 +189,7 @@ section { padding: 6rem 0; }
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 4rem;
+  gap: 6rem;
   width: 100%;
 }
 
