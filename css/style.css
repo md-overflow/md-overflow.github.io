@@ -224,9 +224,9 @@ section { padding: 6rem 0; }
 .hero-tagline {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(0.9rem, 1.6vw, 1.1rem);       /* slightly smaller */
-  color: var(--muted); margin-bottom: 1.75rem;    /* tighter */
-  max-width: 440px; line-height: 1.6;
+  font-size: clamp(1rem, 1.8vw, 1.2rem);       /* slightly smaller */
+  color: var(--muted); margin-bottom: 1.8rem;    /* tighter */
+  max-width: 450px; line-height: 1.65;
 }
 
 .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
