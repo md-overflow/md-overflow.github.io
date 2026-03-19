@@ -203,7 +203,7 @@ section { padding: 6rem 0; }
 
 .hero-eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.7 rem; letter-spacing: 0.2em; text-transform: uppercase;
+  font-size: 0.6 rem; letter-spacing: 0.2em; text-transform: none;
   color: var(--accent); margin-bottom: 0.9rem;   /* tighter */
   display: flex; align-items: center; gap: 0.75rem;
 }
