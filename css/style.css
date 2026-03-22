@@ -226,16 +226,35 @@ section { padding: 6rem 0; }
   font-style: italic;
   font-weight: 400;
   font-size: clamp(1rem, 2vw, 1.3rem);
-  color: var(--muted);
-  margin-bottom: 2.5rem;
+  color: #c8d8ec;
+  margin: 0;
   max-width: 460px;
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
 .hero-tagline-wrap {
-  border-left: 2px solid rgba(55, 54, 39, 0.555);
-  padding-left: 1.25rem;
-  margin-left: 0.25rem;
+  position: relative;
+  display: inline-block;
+  padding: 0.85rem 1.1rem;
+  margin-bottom: 2.5rem;
+}
+.hero-tagline-wrap::before,
+.hero-tagline-wrap::after {
+  content: '';
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border-color: var(--accent);
+  border-style: solid;
+  opacity: 0.55;
+}
+.hero-tagline-wrap::before {
+  top: 0; left: 0;
+  border-width: 1.5px 0 0 1.5px;
+}
+.hero-tagline-wrap::after {
+  bottom: 0; right: 0;
+  border-width: 0 1.5px 1.5px 0;
 }
 
 .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
@@ -607,15 +626,7 @@ section { padding: 6rem 0; }
 }
 
 /* ── Tagline ── */
-.hero-tagline {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: clamp(1rem, 2vw, 1.3rem);
-  color: var(--muted);
-  margin-bottom: 2.5rem;
-  max-width: 460px;
-  line-height: 1.65;
-}
+
 
 /* ═══════════════════════════════
    RICH FOOTER
