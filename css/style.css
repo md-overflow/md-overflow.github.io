@@ -36,7 +36,7 @@
   --surface2:    #f0f4fb;
   --border:      rgba(0, 100, 200, 0.18);
   --border-soft: rgba(0,0,0,0.08);
-  --accent:      #0060cc;
+  --accent:      rgb(0, 96, 204);
   --accent2:     #003fa0;
   --accent-glow: rgba(0, 96, 204, 0.15);
   --text:        #0d1b2e;
@@ -233,7 +233,7 @@ section { padding: 6rem 0; }
 }
 
 .hero-tagline-wrap {
-  border-left: 2px solid rgba(117, 118, 183, 0.7);
+  border-left: 2px solid rgba(0, 95, 204, 0.957);
   padding-left: 1.25rem;
   margin-left: 0.25rem;
 }
