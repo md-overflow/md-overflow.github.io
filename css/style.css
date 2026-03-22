@@ -226,7 +226,7 @@ section { padding: 6rem 0; }
   font-style: italic;
   font-weight: 400;
   font-size: clamp(1rem, 2vw, 1.3rem);
-  color: #c8d8ec;
+  color: var(--text2);
   margin: 0;
   max-width: 460px;
   line-height: 1.7;
