@@ -33,11 +33,19 @@
         <p class="fade-up" style="color:var(--muted); font-size:0.9rem; max-width:560px; margin-top:1rem; line-height:1.8;">
           A mix of VLSI verification environments, RTL implementations, and power electronics projects — spanning both university academia and industry-oriented training at Maven Silicon.
         </p>
-        <div class="filter-bar fade-up">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="verification">Verification</button>
-          <button class="filter-btn" data-filter="rtl">RTL / Digital</button>
-          <button class="filter-btn" data-filter="power">Power Electronics</button>
+        <div class="search-bar fade-up">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" class="search-input" placeholder="Search projects..." id="proj-search" />
+        </div>
+        <div class="tag-cloud fade-up">
+          <span class="tag active" data-tag="all">All</span>
+          <span class="tag" data-tag="verification">Verification</span>
+          <span class="tag" data-tag="uvm">UVM</span>
+          <span class="tag" data-tag="rtl">RTL</span>
+          <span class="tag" data-tag="protocols">Protocols</span>
+          <span class="tag" data-tag="memory">Memory</span>
+          <span class="tag" data-tag="power">Power Electronics</span>
+          <span class="tag" data-tag="matlab">MATLAB</span>
         </div>
       </div>
     </div>
@@ -47,7 +55,7 @@
         <div class="projects-grid" id="projects-grid">
 
           <!-- 1 -->
-          <div class="project-card fade-up" data-category="verification">
+          <div class="project-card fade-up" data-category="verification" data-tags="verification uvm rtl">
             <div class="project-card-img">
               <img src="../assets/images/project-riscv.svg" alt="RISC-V Verification" loading="lazy" />
               <div class="project-card-img-overlay">
@@ -74,7 +82,7 @@
           </div>
 
           <!-- 2 -->
-          <div class="project-card fade-up" data-category="verification">
+          <div class="project-card fade-up" data-category="verification" data-tags="verification uvm protocols rtl">
             <div class="project-card-img">
               <img src="../assets/images/project-uart.svg" alt="UART Verification" loading="lazy" />
               <div class="project-card-img-overlay">
@@ -100,7 +108,7 @@
           </div>
 
           <!-- 3 -->
-          <div class="project-card fade-up" data-category="verification">
+          <div class="project-card fade-up" data-category="verification" data-tags="verification uvm protocols">
             <div class="project-card-img">
               <img src="../assets/images/project-oscillator.svg" alt="AHB to APB Bridge" loading="lazy" />
               <div class="project-card-img-overlay">
@@ -126,7 +134,7 @@
           </div>
 
           <!-- 4 -->
-          <div class="project-card fade-up" data-category="rtl">
+          <div class="project-card fade-up" data-category="rtl" data-tags="rtl uvm verification">
             <div class="project-card-img">
               <img src="../assets/images/project-eye.svg" alt="Packet Router" loading="lazy" />
               <div class="project-card-img-overlay">
@@ -152,7 +160,7 @@
           </div>
 
           <!-- 5 -->
-          <div class="project-card fade-up" data-category="verification">
+          <div class="project-card fade-up" data-category="verification" data-tags="verification memory rtl">
             <div class="project-card-img">
               <img src="../assets/images/project-alu.svg" alt="Dual Port RAM" loading="lazy" />
               <div class="project-card-img-overlay">
@@ -178,7 +186,7 @@
           </div>
 
           <!-- 6 -->
-          <div class="project-card fade-up" data-category="power">
+          <div class="project-card fade-up" data-category="power" data-tags="power matlab">
             <div class="project-card-img">
               <img src="../assets/images/project-iot.svg" alt="3-Phase VSI" loading="lazy" />
               <div class="project-card-img-overlay">
@@ -204,7 +212,7 @@
           </div>
 
           <!-- 7 -->
-          <div class="project-card fade-up" data-category="power">
+          <div class="project-card fade-up" data-category="power" data-tags="power matlab">
             <div class="project-card-img">
               <img src="../assets/images/project-oscillator.svg" alt="3-Phase Rectifier" loading="lazy" />
               <div class="project-card-img-overlay">
@@ -230,7 +238,7 @@
           </div>
 
           <!-- 8 -->
-          <div class="project-card fade-up" data-category="power">
+          <div class="project-card fade-up" data-category="power" data-tags="power matlab">
             <div class="project-card-img">
               <img src="../assets/images/project-eye.svg" alt="Li-ion Battery" loading="lazy" />
               <div class="project-card-img-overlay">
@@ -310,16 +318,35 @@
 
   <script src="../js/main.js"></script>
   <script>
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.project-card');
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        cards.forEach(card => {
-          card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
-        });
+    const projCards = document.querySelectorAll('.project-card');
+    const searchInput = document.getElementById('proj-search');
+    const tags = document.querySelectorAll('.tag');
+    let activeTag = 'all';
+
+    function applyFilters() {
+      const q = searchInput.value.toLowerCase().trim();
+      projCards.forEach(card => {
+        const cardTags = card.dataset.tags || '';
+        const matchesTag = activeTag === 'all' || cardTags.includes(activeTag);
+        const matchesSearch = q === '' || card.innerText.toLowerCase().includes(q);
+        if (matchesTag && matchesSearch) {
+          card.style.display = '';
+          requestAnimationFrame(() => card.style.opacity = '1');
+        } else {
+          card.style.opacity = '0';
+          setTimeout(() => { if (card.style.opacity === '0') card.style.display = 'none'; }, 250);
+        }
+      });
+    }
+
+    searchInput.addEventListener('input', applyFilters);
+
+    tags.forEach(tag => {
+      tag.addEventListener('click', () => {
+        tags.forEach(t => t.classList.remove('active'));
+        tag.classList.add('active');
+        activeTag = tag.dataset.tag;
+        applyFilters();
       });
     });
   </script>
