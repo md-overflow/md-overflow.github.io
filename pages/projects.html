@@ -31,7 +31,7 @@
           Projects &<br><span style="color:var(--accent); font-style:italic;">Builds.</span>
         </h1>
         <p class="fade-up" style="color:var(--muted); font-size:0.9rem; max-width:560px; margin-top:1rem; line-height:1.8;">
-          A mix of VLSI verification environments, RTL implementations, and power electronics projects — spanning both university academia and industry-oriented training.
+          A mix of VLSI verification environments, RTL implementations, and power electronics projects — spanning both university academia and industry-oriented training at Maven Silicon.
         </p>
 
       </div>
@@ -45,7 +45,7 @@
             <div class="section-label fade-up">Browse</div>
             <h2 class="section-title fade-up">All Projects</h2>
             <p class="fade-up" style="color:var(--muted); font-size:0.88rem; margin-top:0.5rem; margin-bottom:2rem; max-width:480px; line-height:1.8;">
-              Projects across VLSI verification, RTL design, and Academia.<br>Use the search or tags to narrow down.
+              8 projects across VLSI verification, RTL design, and power electronics. Use the search or tags to narrow down.
             </p>
           </div>
           <div class="projects-search-wrap fade-up">
@@ -122,11 +122,11 @@
           </div>
 
           <!-- 3 -->
-          <div class="project-card fade-up" data-category="verification" data-tags="verification uvm protocols">
+          <div class="project-card fade-up" data-category="verification" data-tags="verification uvm protocols rtl">
             <div class="project-card-img">
-              <img src="../assets/images/project-oscillator.svg" alt="AHB to APB Bridge" loading="lazy" />
+              <img src="../assets/images/project-oscillator.svg" alt="AHB to APB Bridge VIP" loading="lazy" />
               <div class="project-card-img-overlay">
-                <a href="#" class="overlay-btn">
+                <a href="project-ahb-apb-vip.html" class="overlay-btn">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                   GitHub
                 </a>
@@ -134,15 +134,17 @@
             </div>
             <div class="project-card-body">
               <span class="project-tag">Protocol Verification</span>
-              <h3 class="project-title">AHB to APB Bridge — Functional Verification</h3>
-              <p class="project-desc">Verified RTL bridge module with a full UVM testbench across burst and single transfers. Developed reusable sequences, protocol checkers, and automated regression flows. Documented methodology improvements for future reuse.</p>
+              <h3 class="project-title">AHB-to-APB Bridge — Verification IP (VIP)</h3>
+              <p class="project-desc">Full UVM-based VIP for an AHB-to-APB bridge with separate AHB master and APB slave agents, each with driver, monitor, sequencer, and transaction classes. Supports SINGLE, INCR, and WRAP burst types with constrained-random stimulus. Scoreboard performs byte-accurate data comparison across all transfer sizes (byte, halfword, word), with functional covergroups on both AHB and APB sides. Regression Makefile targets Mentor QuestaSim and Synopsys VCS.</p>
               <div class="project-footer">
                 <div class="project-tech">
+                  <span class="tech-badge">SystemVerilog</span>
                   <span class="tech-badge">UVM</span>
-                  <span class="tech-badge">AMBA</span>
+                  <span class="tech-badge">AMBA AHB/APB</span>
                   <span class="tech-badge">QuestaSim</span>
+                  <span class="tech-badge">Synopsys VCS</span>
                 </div>
-                <a href="#" class="project-link">GitHub →</a>
+                <a href="project-ahb-apb-vip.html" class="project-link">View Details →</a>
               </div>
             </div>
           </div>
