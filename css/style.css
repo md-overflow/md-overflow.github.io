@@ -910,3 +910,22 @@ footer::before {
 .project-card {
   transition: opacity 0.25s ease;
 }
+
+/* ── Projects page header layout ── */
+.projects-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+.projects-search-wrap {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 420px;
+}
+@media (max-width: 900px) {
+  .projects-header { flex-direction: column; }
+  .projects-search-wrap { max-width: 100%; }
+}
